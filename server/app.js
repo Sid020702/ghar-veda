@@ -3,10 +3,12 @@ const cors = require("cors")
 const bodyParser = require('body-parser')
 const app = express()
 const mongoose = require('mongoose')
-const MONGO_URI = "mongodb+srv://sidharth706:Sid020702@ghar-veda-db.oddaebj.mongodb.net/main-db?retryWrites=true"
 const shopRoutes = require("./routes/shop.js")
 const authRoutes = require("./routes/auth.js")
+const dotenv = require("dotenv")
+dotenv.config()
 
+const MONGO_URI = process.env["MONGO_URI"]
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))

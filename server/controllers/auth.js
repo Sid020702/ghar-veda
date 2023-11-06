@@ -11,7 +11,7 @@ exports.signup = (req, res) => {
     }).then(hashedPassword => {
         return User.create({ name, email, password: hashedPassword, orders })
     }).then(newUser => {
-        const token = jwt.sign({ email: newUser.email, id: newUser._id }, "test", { expiresIn: '1h' })
+        const token = jwt.sign({ email: newUser.email, id: newUser._id }, process.env["JWT_TOKEN"], { expiresIn: '1h' })
         res.status(200).json({ result: newUser, token })
     }).catch(err => {
         console.log(err)
@@ -31,7 +31,7 @@ exports.login = async (req, res) => {
         if (!isPasswordCrt) {
             return res.status(400).json({ message: "Invalid credentials" })
         }
-        const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, "test", { expiresIn: '1h' })
+        const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env["JWT_TOKEN"], { expiresIn: '1h' })
         res.status(200).json({ result: existingUser, token })
     } catch (error) {
         res.status(500).json({ error: "Something went wrong..." })
