@@ -31,19 +31,24 @@ const Auth = () => {
             <div style={{ '--image-url': "url(https://res.cloudinary.com/drauu5bdm/image/upload/v1699213178/ghar-veda/Main-logo_uvyfng.svg)" }}
                 className="w-1/6 md:w-[10%] xl:w-1/12 aspect-square bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center"
             ></div>
-            <h1 className="w-full text-2xl font-bold text-left my-5 md:w-3/4 xl:w-1/2">
-                {isSignup ? "Sign Up" : "Login"}
-            </h1>
+            <div className="flex w-full items-center my-5 md:w-3/4 xl:w-1/2">
+                <h1 className="text-2xl mr-5 font-bold text-left ">
+                    {isSignup ? "Sign Up" : "Login"}
+                </h1>
+            </div>
             <form action="" className="w-full my-2 md:w-3/4 xl:w-1/2" onSubmit={handleSubmit}>
                 {
                     isSignup && (
                         <>
-                            <label htmlFor="Full Name" className="w-full block text-left font-semibold mt-2">Full Name</label>
+                            <label htmlFor="Full Name" className="w-full block text-left font-semibold mt-2">
+                                Full Name
+                            </label>
                             <input onChange={(e) => { setName(e.target.value) }} type="text" placeholder="Full Name" name="Full Name" className="my-3 w-full p-3 rounded-md bg-[#EFEFEF]" />
                         </>
 
                     )
                 }
+
                 <label htmlFor="Email" className="w-full block text-left font-semibold mt-2">Email</label>
                 <input onChange={(e) => { setEmail(e.target.value) }} type="text" placeholder="Email" name="Email" className="my-3 w-full p-3 rounded-md bg-[#EFEFEF]" />
                 <label htmlFor="Password" className="w-full block text-left font-semibold mt-2">Password</label>
